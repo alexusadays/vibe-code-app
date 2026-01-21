@@ -1,0 +1,143 @@
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    color: #2d3748;
+    text-align: center;
+}
+
+.subtitle {
+    margin: 0 0 2rem 0;
+    color: #718096;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.response-container {
+    margin-bottom: 1.5rem;
+}
+
+.response-box {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    background-color: #f7fafc;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+.response-box:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+}
+
+.response-box::placeholder {
+    color: #a0aec0;
+}
+
+.error-message {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background-color: #fed7d7;
+    color: #c53030;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #e47ff5 0%, #e94560 100%);
+}
+
+.api-info {
+    text-align: center;
+    color: #a0aec0;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+}
