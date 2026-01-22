@@ -69,6 +69,12 @@ jobs:
             sleep 2
           done
 
+      - name: Install Playwright dependencies
+        run: |
+          cd playwright
+          npm install
+          cd ..
+
       - name: Run Playwright tests
         run: docker compose run --rm playwright
         env:
