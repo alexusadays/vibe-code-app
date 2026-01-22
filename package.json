@@ -10,15 +10,22 @@
     "start:docker": "docker compose up -d --build backend frontend",
     "stop:docker": "docker compose down",
     "logs:docker": "docker compose logs -f",
+    "logs:backend": "docker compose logs -f backend",
+    "logs:frontend": "docker compose logs -f frontend",
     "restart:docker": "docker compose restart",
     "rebuild:docker": "docker compose up -d --build --force-recreate",
+    "ps:docker": "docker compose ps",
     "test:e2e": "cd playwright && npx playwright test",
     "test:e2e:docker": "docker compose run --rm playwright",
     "test:e2e:ui": "cd playwright && npx playwright test --ui",
     "test:e2e:headed": "cd playwright && npx playwright test --headed",
+    "test:e2e:debug": "cd playwright && npx playwright test --debug",
     "report:open": "cd playwright && npx playwright show-report",
     "clean": "rm -rf node_modules frontend/node_modules playwright/node_modules backend/__pycache__ backend/app/__pycache__",
-    "clean:docker": "docker compose down -v && docker system prune -f"
+    "clean:docker": "docker compose down -v && docker system prune -f",
+    "install:all": "npm install && cd frontend && npm install",
+    "health:backend": "node -e \"require('http').get('http://localhost:8000/api/health', r => r.on('data', d => console.log(d.toString())))\"",
+    "health:frontend": "node -e \"require('http').get('http://localhost:3000/health', r => r.on('data', d => console.log(d.toString())))\""
   },
   "keywords": [
     "automation",

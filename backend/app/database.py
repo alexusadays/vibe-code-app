@@ -53,9 +53,9 @@ def init_db():
         )
         
         conn.commit()
-        print(f"✅ Database initialized with {len(seed_data)} responses")
+        print(f"Database initialized with {len(seed_data)} responses")
     else:
-        print(f"✅ Database already contains {count} responses")
+        print(f"Database already contains {count} responses")
     
     conn.close()
 

@@ -11,12 +11,12 @@ from .models import HealthResponse, TextResponse, ErrorResponse
 async def lifespan(app: FastAPI):
     """Lifespan event handler - runs on startup and shutdown."""
     # Startup
-    print("🚀 Starting application...")
+    print("Starting application...")
     init_db()
-    print("✅ Application started successfully")
+    print("Application started successfully")
     yield
     # Shutdown
-    print("👋 Shutting down application...")
+    print("Shutting down application...")
 
 
 # Create FastAPI app
