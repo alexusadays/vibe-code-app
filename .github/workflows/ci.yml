@@ -54,6 +54,20 @@ jobs:
           echo "Checking backend..."
           docker compose exec backend curl http://localhost:8000/api/health
           echo "Checking frontend..."
+          echo "Waiting for frontend to be ready..."
+          for i in {1..20}; do
+            if docker compose exec frontend wget -O- http://localhost:3000/health 2>/dev/null; then
+              echo "Frontend is healthy!"
+              break
+            fi
+            if [ $i -eq 20 ]; then
+              echo "Frontend health check timeout"
+              docker compose logs frontend
+              exit 1
+            fi
+            echo "Attempt $i/20 - waiting..."
+            sleep 2
+          done
           docker compose exec frontend wget -O- http://localhost:3000/health
 
       - name: Run Playwright tests
