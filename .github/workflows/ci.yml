@@ -1,0 +1,110 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: "18"
+
+jobs:
+  test:
+    name: Run E2E Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Start Docker services
+        run: |
+          docker compose up -d --build backend frontend
+          echo "Services started, waiting for health checks..."
+
+      - name: Wait for backend health
+        run: |
+          echo "Waiting for backend to be healthy..."
+          for i in {1..30}; do
+            if docker compose exec backend curl -f http://localhost:8000/api/health; then
+              echo "Backend is healthy!"
+              break
+            fi
+            if [ $i -eq 30 ]; then
+              echo "Backend health check timeout"
+              docker compose logs backend
+              exit 1
+            fi
+            echo "Attempt $i/30 - waiting..."
+            sleep 2
+          done
+
+      - name: Verify services are running
+        run: |
+          docker compose ps
+          echo "Checking backend..."
+          docker compose exec backend curl http://localhost:8000/api/health
+          echo "Checking frontend..."
+          docker compose exec frontend wget -O- http://localhost:3000/health
+
+      - name: Run Playwright tests
+        run: docker compose run --rm playwright
+        env:
+          CI: true
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright/playwright-report/
+          retention-days: 30
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: playwright/test-results/
+          retention-days: 30
+
+      - name: Stop Docker services
+        if: always()
+        run: docker compose down
+
+  deploy:
+    name: Deploy Application
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: |
+          echo "🚀 Deploying to production..."
+          echo "This is where you would deploy to your hosting platform"
+          echo "Examples:"
+          echo "  - Deploy to Heroku: git push heroku main"
+          echo "  - Deploy to Vercel: vercel --prod"
+          echo "  - Deploy to AWS: aws deploy..."
+          echo "  - Deploy to Azure: az webapp deploy..."
+          echo "✅ Deployment successful (placeholder)"
+
+      - name: Notify deployment
+        run: |
+          echo "📢 Deployment completed!"
+          echo "URL: https://your-app-url.com"
+          echo "Commit: ${{ github.sha }}"
+          echo "Deployed by: ${{ github.actor }}"
