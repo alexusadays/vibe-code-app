@@ -4,7 +4,7 @@
   "description": "Full-stack automation testing demo with Playwright gate",
   "private": true,
   "scripts": {
-    "dev:backend": "cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:backend": "cd backend && .\\venv\\Scripts\\python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
     "dev:frontend": "cd frontend && npm run dev",
     "start": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "start:docker": "docker compose up -d --build backend frontend",
