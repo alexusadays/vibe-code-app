@@ -157,7 +157,7 @@ npm run report:open
 ### Manual Testing
 
 1. **Backend**: Visit http://localhost:8000/docs for interactive API testing
-2. **Frontend**: Open http://localhost:5173 and click the RANDOM/NEXT buttons
+2. **Frontend**: Open http://localhost:3000 and click the RANDOM/NEXT buttons
 3. **Docker Stack**: Visit http://localhost:3000 after `npm run start:docker`
 
 ## 🔧 Available NPM Scripts
@@ -210,7 +210,7 @@ docker compose down -v              # Stop and remove volumes
 ### Backend (.env in backend/)
 ```env
 DATABASE_URL=sqlite:///./data/app.db
-CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+CORS_ORIGINS=http://localhost:3000
 ```
 
 ### Frontend
@@ -280,7 +280,7 @@ pip install -r requirements.txt
 
 **CORS errors:**
 - Ensure backend is running
-- Check backend CORS_ORIGINS includes `http://localhost:5173`
+- Check backend CORS_ORIGINS includes `http://localhost:3000`
 - Restart backend after changing CORS settings
 
 **Environment variables not loading:**
@@ -309,12 +309,10 @@ pip install -r requirements.txt
 - ✅ **Module 1**: Project Foundation & Structure
 - ✅ **Module 2**: Backend Service (FastAPI + SQLite)
 - ✅ **Module 3**: Frontend Service (React + Vite)
-- ⏳ **Module 4**: Docker Compose Integration
-- ⏳ **Module 5**: Root Orchestration Scripts
-- ⏳ **Module 6**: Playwright Test Suite
-- ⏳ **Module 7**: GitHub Actions CI/CD
-- ⏳ **Module 8**: Documentation & Polish
-- ⏳ **Module 9**: Verification & Testing
+- ✅ **Module 4**: Docker Compose Integration
+- ✅ **Module 5**: Root Orchestration Scripts
+- ✅ **Module 6**: Playwright Test Suite
+- ✅ **Module 7**: GitHub Actions CI/CD
 
 ## 🤝 Contributing
 
@@ -343,9 +341,9 @@ This project demonstrates:
 - ✅ Docker containerization
 - ✅ Multi-stage Docker builds
 - ✅ Docker Compose orchestration
-- ⏳ End-to-end testing with Playwright
-- ⏳ CI/CD pipeline automation
-- ⏳ Quality gates and deployment strategies
+- ✅ End-to-end testing with Playwright
+- ✅ CI/CD pipeline automation
+- ✅ Quality gates and deployment strategies
 
 ## 🔗 Useful Links
 

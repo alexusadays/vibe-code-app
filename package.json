@@ -35,7 +35,7 @@
     "fastapi",
     "react"
   ],
-  "author": "Aliaksandr Khvastovich",
+  "author": "Aliaksandr Khvastovich aka alexusadays",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
