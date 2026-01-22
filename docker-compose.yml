@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./app.db
+      - DATABASE_URL=sqlite:///./data/app.db
       - CORS_ORIGINS=http://localhost:3000,http://frontend:3000
     volumes:
       - ./backend/data:/app/data
@@ -21,6 +21,7 @@ services:
       start_period: 5s
     networks:
       - vibe-network
+    restart: unless-stopped
 
   frontend:
     build:
@@ -36,6 +37,7 @@ services:
         condition: service_healthy
     networks:
       - vibe-network
+    restart: unless-stopped
 
   playwright:
     image: mcr.microsoft.com/playwright:v1.40.0-jammy
@@ -54,10 +56,14 @@ services:
         condition: service_healthy
     networks:
       - vibe-network
+    profiles:
+      - test
 
 networks:
   vibe-network:
     driver: bridge
+    name: vibe-network
 
 volumes:
   backend-data:
+    driver: local
