@@ -1,5 +1,7 @@
 # Vibe Code App
 
+[![CI/CD Pipeline](https://github.com/alexusadays/vibe-code-app/actions/workflows/ci.yml/badge.svg)](https://github.com/alexusadays/vibe-code-app/actions/workflows/ci.yml)
+
 > Full-stack automation testing demo with Playwright CI/CD gate
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
