@@ -360,3 +360,12 @@ This project demonstrates:
 **Current Phase**: Module 3 Complete - Frontend Implementation
 
 For questions or issues, please open a GitHub issue or refer to the module guides in the project root.
+
+```markdown
+## 📚 Additional Documentation
+
+- [SCRIPTS.md](SCRIPTS.md) - Complete scripts reference
+- [QUICKREF.md](QUICKREF.md) - Quick reference card
+- [DOCKER.md](DOCKER.md) - Docker usage guide
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
+```
