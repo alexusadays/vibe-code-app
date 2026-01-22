@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   playwright:
-    image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    image: mcr.microsoft.com/playwright:v1.57.0-jammy
     container_name: vibe-playwright
     working_dir: /app
     volumes:
