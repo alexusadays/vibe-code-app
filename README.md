@@ -8,6 +8,7 @@
 
 ## 🎯 Project Overview
 
+This example was mostly vibe-coded. 
 A production-ready application demonstrating modern CI/CD practices with end-to-end testing:
 
 - **Backend**: Python FastAPI + SQLite
