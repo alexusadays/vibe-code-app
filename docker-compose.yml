@@ -38,7 +38,9 @@ services:
     restart: unless-stopped
 
   playwright:
-    image: mcr.microsoft.com/playwright:v1.57.0-jammy
+    build:
+      context: ./playwright
+      dockerfile: Dockerfile
     container_name: vibe-playwright
     working_dir: /app
     volumes:
